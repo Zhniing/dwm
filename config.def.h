@@ -9,11 +9,12 @@ static const unsigned int systrayonleft = 0;    /* 0: systray in the right corne
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;        /* 0 means no systray */
-static const int showbar            = 1;        /* 0 means no bar */
+static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=18",
-                                        "WenQuanYi Micro Hei:size=18:type=Regular:antialias=true:autohint=true"};
-static const char dmenufont[]       = "monospace:size=18";
+static const char *fonts[]          = { "monospace:size=10",
+                                        "WenQuanYi Micro Hei:size=10:type=Regular:antialias=true:autohint=true",
+                                        "Hack Nerd Font:type=Regular:size:10:antialias=true:autohint=true"};
+static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -26,16 +27,29 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "󰆍", "󰈹", "", "󰨞", "󱓧", "󰝚", "󰎤", "󰎧", "󰎪" };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class                            instance    title       tags mask     isfloating   monitor */
+	{ "Gimp",                           NULL,       NULL,       0,            1,           -1 },
+	{ "Firefox-esr",                    NULL,       NULL,       1 << 1,       0,           -1 },
+	{ "firefox",                        NULL,       NULL,       1 << 1,       0,           -1 },
+	{ "Alacritty",                      NULL,       NULL,       0,            0,           -1 },
+	{ "Google-chrome",                  NULL,       NULL,       1 << 1,       0,           -1 },
+    { "burp-StartBurp",                 NULL,       NULL,       1 << 2,       0,           -1 },
+    { "me.leon.ToolsApp",               NULL,       NULL,       1 << 2,       0,           -1 },
+    { "Code",                           NULL,       NULL,       1 << 3,       0,           -1 },
+	{ "Typora",                         NULL,       NULL,       1 << 4,       0,           -1 },
+	{ "wpsoffice",                      NULL,       NULL,       1 << 4,       0,           -1 },
+	{ "com.sayonara-player.Sayonara",   NULL,       NULL,       1 << 5,       0,           -1 },
+	{ "sunamu",                         NULL,       NULL,       1 << 5,       0,           -1 },
+	{ "Wine",                           NULL,       NULL,       0,            1,           -1 },
+	{ "Clash for Windows",              NULL,       NULL,       0,            1,           -1 },
+	{ "QQ",                             NULL,       NULL,       0,            1,           -1 },
 };
 
 /* layout(s) */
@@ -87,7 +101,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+	{ MODKEY,                       XK_Escape, killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
@@ -102,16 +116,16 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	TAGKEYS(                        XK_s,                      0)
+	TAGKEYS(                        XK_w,                      1)
+	TAGKEYS(                        XK_q,                      2)
+	TAGKEYS(                        XK_c,                      3)
+	TAGKEYS(                        XK_e,                      4)
+	TAGKEYS(                        XK_r,                      5)
+	TAGKEYS(                        XK_1,                      6)
+	TAGKEYS(                        XK_2,                      7)
+	TAGKEYS(                        XK_3,                      8)
+	{ MODKEY|ShiftMask,             XK_Escape,      quit,      {0} },
 };
 
 /* button definitions */
