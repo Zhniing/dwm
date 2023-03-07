@@ -80,6 +80,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *roficmd[] = { "rofi", "-show", NULL };
+static const char *powermenu[] = { "rofi", "-modi", "Power:~/.config/rofi/power.sh", "-show", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "alacritty", "-t", scratchpadname, NULL };
@@ -125,7 +126,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_1,                      6)
 	TAGKEYS(                        XK_2,                      7)
 	TAGKEYS(                        XK_3,                      8)
-	{ MODKEY|ShiftMask,             XK_Escape,      quit,      {0} },
+	{ MODKEY|ShiftMask,             XK_Escape, spawn,          {.v = powermenu } },
 };
 
 /* button definitions */
