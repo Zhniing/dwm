@@ -1203,9 +1203,12 @@ manage(Window w, XWindowAttributes *wa)
 	c->x = MAX(c->x, c->mon->wx);
 	c->y = MAX(c->y, c->mon->wy);
 	c->bw = borderpx;
+	if (c->isfloating)
+		c->bw = fborderpx;
 
 	selmon->tagset[selmon->seltags] &= ~scratchtag;
 	if (!strcmp(c->name, scratchpadname)) {
+		c->bw = fborderpx;
 		c->mon->tagset[c->mon->seltags] |= c->tags = scratchtag;
 		c->isfloating = True;
 		c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2);
@@ -2083,9 +2086,16 @@ togglefloating(const Arg *arg)
 	if (selmon->sel->isfullscreen) /* no support for fullscreen windows */
 		return;
 	selmon->sel->isfloating = !selmon->sel->isfloating || selmon->sel->isfixed;
-	if (selmon->sel->isfloating)
+	if (selmon->sel->isfloating) {
+		selmon->sel->bw = fborderpx;
+		configure(selmon->sel);
+        int borderdiff = (fborderpx - borderpx) * 2;
 		resize(selmon->sel, selmon->sel->x, selmon->sel->y,
-			selmon->sel->w, selmon->sel->h, 0);
+			selmon->sel->w - borderdiff, selmon->sel->h - borderdiff, 0);
+	} else {
+		selmon->sel->bw = borderpx;
+		configure(selmon->sel);
+	}
 	arrange(selmon);
 }
 
