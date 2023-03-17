@@ -85,6 +85,8 @@ static const char *powermenu[] = { "rofi", "-modi", "Power:~/.config/rofi/power.
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "alacritty", "-t", scratchpadname, NULL };
+static const char *voldown[] = { "amixer", "set", "Master", "5%-", "unmute", NULL };
+static const char *volup[] = { "amixer", "set", "Master", "5%+", "unmute", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -128,6 +130,8 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_2,                      7)
 	TAGKEYS(                        XK_3,                      8)
 	{ MODKEY|ShiftMask,             XK_Escape, spawn,          {.v = powermenu } },
+	{ MODKEY,                       XK_bracketleft, spawn,     {.v = voldown } },
+	{ MODKEY,                       XK_bracketright, spawn,    {.v = volup } },
 };
 
 /* button definitions */
