@@ -36,21 +36,21 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class                            instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",                           NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox-esr",                    NULL,       NULL,       1 << 1,       0,           -1 },
+	{ "Wine",                           NULL,       NULL,       0,            1,           -1 },
+	{ "Clash for Windows",              NULL,       NULL,       0,            1,           -1 },
+	{ "QQ",                             NULL,       NULL,       0,            1,           -1 },
+	{ "Anki",                           NULL,       NULL,       0,            1,           -1 },
+	{ "Alacritty",                      NULL,       NULL,       1 << 0,       0,           -1 },
 	{ "firefox",                        NULL,       NULL,       1 << 1,       0,           -1 },
-	{ "Alacritty",                      NULL,       NULL,       0,            0,           -1 },
 	{ "Google-chrome",                  NULL,       NULL,       1 << 1,       0,           -1 },
-    { "burp-StartBurp",                 NULL,       NULL,       1 << 2,       0,           -1 },
-    { "me.leon.ToolsApp",               NULL,       NULL,       1 << 2,       0,           -1 },
-    { "Code",                           NULL,       NULL,       1 << 3,       0,           -1 },
+	{ "burp-StartBurp",                 NULL,       NULL,       1 << 2,       0,           -1 },
+	{ "me.leon.ToolsApp",               NULL,       NULL,       1 << 2,       0,           -1 },
+	{ "Code",                           NULL,       NULL,       1 << 3,       0,           -1 },
 	{ "Typora",                         NULL,       NULL,       1 << 4,       0,           -1 },
 	{ "wpsoffice",                      NULL,       NULL,       1 << 4,       0,           -1 },
 	{ "com.sayonara-player.Sayonara",   NULL,       NULL,       1 << 5,       0,           -1 },
 	{ "sunamu",                         NULL,       NULL,       1 << 5,       0,           -1 },
-	{ "Wine",                           NULL,       NULL,       0,            1,           -1 },
-	{ "Clash for Windows",              NULL,       NULL,       0,            1,           -1 },
-	{ "QQ",                             NULL,       NULL,       0,            1,           -1 },
+	{ "mpv",                            NULL,       NULL,       1 << 5,       0,           -1 },
 };
 
 /* layout(s) */
